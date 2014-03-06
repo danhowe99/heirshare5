@@ -14,6 +14,5 @@ privileged aspect EstateAdministratorService_Roo_Service {
     public abstract EstateAdministrator EstateAdministratorService.findEstateAdministrator(Long id);    
     public abstract List<EstateAdministrator> EstateAdministratorService.findAllEstateAdministrators();    
     public abstract List<EstateAdministrator> EstateAdministratorService.findEstateAdministratorEntries(int firstResult, int maxResults);    
-    public abstract void EstateAdministratorService.saveEstateAdministrator(EstateAdministrator estateAdministrator);    
     public abstract EstateAdministrator EstateAdministratorService.updateEstateAdministrator(EstateAdministrator estateAdministrator);    
 }
