@@ -1,30 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_estateadministrator" z="azHpRFHyKbbRhAsW4Gs5XV0N+eo=">
-            <menu:item id="i_estateadministrator_new" messageCode="global_menu_new" url="/admin/estateAdministrator?form" z="p77wNiNWZBO9JD9hXA/gTqAEhls="/>
-            <menu:item id="i_estateadministrator_list" messageCode="global_menu_list" url="/admin/estateAdministrator?page=1&amp;size=${empty param.size ? 10 : param.size}" z="6wzJYi+5tGS9CAlskI7qgjQICcQ="/>
-        </menu:category>
-        <menu:category id="c_estate" z="r5JB7uWs+SKr7sDuNfqz1B8ppRU=">
-            <menu:item id="i_estate_new" messageCode="global_menu_new" url="/admin/estate?form" z="lh9Ep0UOJgXrsA2Ypcx8hET2N/s="/>
-            <menu:item id="i_estate_list" messageCode="global_menu_list" url="/admin/estate?page=1&amp;size=${empty param.size ? 10 : param.size}" z="T0HkU6IkcFKOb2MPwz3XI3Vl67I="/>
-        </menu:category>
-        <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
-            <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
-        </menu:category>
-        <menu:category id="c_beneficiary" z="PGDZnBVeGvZcWLPkzmI5qo3pGfY=">
-            <menu:item id="i_beneficiary_new" messageCode="global_menu_new" url="/admin/beneficiary?form" z="eSYfn4rWgtLs4noqYSy/mwRENJU="/>
-            <menu:item id="i_beneficiary_list" messageCode="global_menu_list" url="/admin/beneficiary?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ly4Pl71h374hxdB4eTRIFowkHo8="/>
-        </menu:category>
-        <menu:category id="c_inventoryitem" z="fnywkllb4elYwrYPM9nXtK97l18=">
-            <menu:item id="i_inventoryitem_new" messageCode="global_menu_new" url="/admin/inventoryItem?form" z="nOAKZFbJJoBozzdLBFt1ta8xJXw="/>
-            <menu:item id="i_inventoryitem_list" messageCode="global_menu_list" url="/admin/inventoryItem?page=1&amp;size=${empty param.size ? 10 : param.size}" z="GHPM/SN4QxjYwi33bZVP/Dhpv24="/>
-        </menu:category>
-        <menu:category id="c_beneficiaryitemchoice" z="FAt5UbeiqkkpEurjRWAb4oD/MJY=">
-            <menu:item id="i_beneficiaryitemchoice_new" messageCode="global_menu_new" url="/admin/beneficiaryItemChoice?form" z="p7dX62PBVgakqrEoWRfP3djxizE="/>
-            <menu:item id="i_beneficiaryitemchoice_list" messageCode="global_menu_list" url="/admin/beneficiaryItemChoice?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ykufZQai0J+Qwj4VaVnWOPL9u5U="/>
+        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+            <menu:category id="c_estateadministrator" z="azHpRFHyKbbRhAsW4Gs5XV0N+eo=">
+                <menu:item id="i_estateadministrator_new" messageCode="global_menu_new" url="/admin/estateAdministrator?form" z="p77wNiNWZBO9JD9hXA/gTqAEhls="/>
+                <menu:item id="i_estateadministrator_list" messageCode="global_menu_list" url="/admin/estateAdministrator?page=1&amp;size=${empty param.size ? 10 : param.size}" z="6wzJYi+5tGS9CAlskI7qgjQICcQ="/>
+            </menu:category>
+            <menu:category id="c_estate">
+                <menu:item id="i_estate_new" messageCode="global_menu_new" url="/admin/estate?form"/>
+                <menu:item id="i_estate_list" messageCode="global_menu_list" url="/admin/estate?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+            </menu:category>
+            <menu:category id="c_beneficiary"/>
+            <menu:category id="c_inventoryitem" z="fnywkllb4elYwrYPM9nXtK97l18=">
+                <menu:item id="i_inventoryitem_new" messageCode="global_menu_new" url="/admin/inventoryItem?form" z="nOAKZFbJJoBozzdLBFt1ta8xJXw="/>
+                <menu:item id="i_inventoryitem_list" messageCode="global_menu_list" url="/admin/inventoryItem?page=1&amp;size=${empty param.size ? 10 : param.size}" z="GHPM/SN4QxjYwi33bZVP/Dhpv24="/>
+            </menu:category>
+            <menu:category id="c_beneficiaryitemchoice" z="FAt5UbeiqkkpEurjRWAb4oD/MJY=">
+                <menu:item id="i_beneficiaryitemchoice_new" messageCode="global_menu_new" url="/admin/inventoryItemChoice?form" z="D+vSz1YglNiLdHCO6cGDIC0JsSM="/>
+                <menu:item id="i_beneficiaryitemchoice_list" messageCode="global_menu_list" url="/admin/inventoryItemChoice?page=1&amp;size=${empty param.size ? 10 : param.size}" z="sJr75wr/9cV1aoME85MAPgsULb0="/>
+            </menu:category>
+            <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
+                <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
+            </menu:category>
+        </sec:authorize>
+        <sec:authorize access="hasAuthority('ROLE_ESTATE_ADMIN')">
+            <menu:category id="c_estate">
+                <menu:item id="i_estate_new" messageCode="global_menu_new" url="/estateAdmin/estate?form"/>
+                <menu:item id="i_estate_list" messageCode="global_menu_list" url="/estateAdmin/estate?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+            </menu:category>
+            <menu:category id="c_beneficiary">
+                <menu:item id="i_beneficiary_new" messageCode="global_menu_new" url="/estateAdmin/beneficiary?form"/>
+                <menu:item id="i_beneficiary_list" messageCode="global_menu_list" url="/estateAdmin/beneficiary?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+            </menu:category>
+        </sec:authorize>
+        <menu:category id="c_estateadmin">
+            <sec:authorize access="isAnonymous()">
+                <menu:item id="i_login" messageCode="global_generic" url="/login"/>
+                <menu:item id="i_estateadmin_new" messageCode="global_generic" url="/estateAdmin/estateAdministrator?form"/>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <menu:item id="i_logout" messageCode="global_generic" url="/resources/j_spring_security_logout"/>
+            </sec:authorize>
         </menu:category>
     </menu:menu>
 </div>
