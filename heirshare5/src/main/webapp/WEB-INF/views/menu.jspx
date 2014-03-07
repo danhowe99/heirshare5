@@ -14,5 +14,17 @@
         <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
             <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
         </menu:category>
+        <menu:category id="c_beneficiary" z="PGDZnBVeGvZcWLPkzmI5qo3pGfY=">
+            <menu:item id="i_beneficiary_new" messageCode="global_menu_new" url="/admin/beneficiary?form" z="eSYfn4rWgtLs4noqYSy/mwRENJU="/>
+            <menu:item id="i_beneficiary_list" messageCode="global_menu_list" url="/admin/beneficiary?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ly4Pl71h374hxdB4eTRIFowkHo8="/>
+        </menu:category>
+        <menu:category id="c_inventoryitem" z="fnywkllb4elYwrYPM9nXtK97l18=">
+            <menu:item id="i_inventoryitem_new" messageCode="global_menu_new" url="/admin/inventoryItem?form" z="nOAKZFbJJoBozzdLBFt1ta8xJXw="/>
+            <menu:item id="i_inventoryitem_list" messageCode="global_menu_list" url="/admin/inventoryItem?page=1&amp;size=${empty param.size ? 10 : param.size}" z="GHPM/SN4QxjYwi33bZVP/Dhpv24="/>
+        </menu:category>
+        <menu:category id="c_beneficiaryitemchoice" z="FAt5UbeiqkkpEurjRWAb4oD/MJY=">
+            <menu:item id="i_beneficiaryitemchoice_new" messageCode="global_menu_new" url="/admin/beneficiaryItemChoice?form" z="p7dX62PBVgakqrEoWRfP3djxizE="/>
+            <menu:item id="i_beneficiaryitemchoice_list" messageCode="global_menu_list" url="/admin/beneficiaryItemChoice?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ykufZQai0J+Qwj4VaVnWOPL9u5U="/>
+        </menu:category>
     </menu:menu>
 </div>

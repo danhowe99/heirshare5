@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_howed_heirshare5_domain_BeneficiaryItemChoice" object="${beneficiaryitemchoice}" path="/admin/beneficiaryItemChoice" z="Aqk0wSyoj7oBoJ0egmlLAmcGXkk=">
+        <field:display field="choicePriority" id="s_com_howed_heirshare5_domain_BeneficiaryItemChoice_choicePriority" object="${beneficiaryitemchoice}" z="REvMk5hMMfEm4lVOOIRovCSv+rc="/>
+        <field:display field="inventoryItem" id="s_com_howed_heirshare5_domain_BeneficiaryItemChoice_inventoryItem" object="${beneficiaryitemchoice}" z="wIA1P3/G/T2kKG2xFV47S8Ypdy0="/>
+        <field:display field="beneficiary" id="s_com_howed_heirshare5_domain_BeneficiaryItemChoice_beneficiary" object="${beneficiaryitemchoice}" z="McW+45Gn+XBDlKOelhfvRXC7GN0="/>
+    </page:show>
+</div>

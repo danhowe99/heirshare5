@@ -4,10 +4,16 @@
 package com.howed.heirshare5.admin.web;
 
 import com.howed.heirshare5.admin.web.ApplicationConversionServiceFactoryBean;
+import com.howed.heirshare5.domain.Beneficiary;
+import com.howed.heirshare5.domain.BeneficiaryItemChoice;
 import com.howed.heirshare5.domain.Estate;
 import com.howed.heirshare5.domain.EstateAdministrator;
+import com.howed.heirshare5.domain.InventoryItem;
+import com.howed.heirshare5.service.BeneficiaryItemChoiceService;
+import com.howed.heirshare5.service.BeneficiaryService;
 import com.howed.heirshare5.service.EstateAdministratorService;
 import com.howed.heirshare5.service.EstateService;
+import com.howed.heirshare5.service.InventoryItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -18,10 +24,67 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
     
     @Autowired
+    BeneficiaryService ApplicationConversionServiceFactoryBean.beneficiaryService;
+    
+    @Autowired
+    BeneficiaryItemChoiceService ApplicationConversionServiceFactoryBean.beneficiaryItemChoiceService;
+    
+    @Autowired
     EstateService ApplicationConversionServiceFactoryBean.estateService;
     
     @Autowired
     EstateAdministratorService ApplicationConversionServiceFactoryBean.estateAdministratorService;
+    
+    @Autowired
+    InventoryItemService ApplicationConversionServiceFactoryBean.inventoryItemService;
+    
+    public Converter<Beneficiary, String> ApplicationConversionServiceFactoryBean.getBeneficiaryToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.howed.heirshare5.domain.Beneficiary, java.lang.String>() {
+            public String convert(Beneficiary beneficiary) {
+                return new StringBuilder().append(beneficiary.getEmail()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Beneficiary> ApplicationConversionServiceFactoryBean.getIdToBeneficiaryConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.howed.heirshare5.domain.Beneficiary>() {
+            public com.howed.heirshare5.domain.Beneficiary convert(java.lang.Long id) {
+                return beneficiaryService.findBeneficiary(id);
+            }
+        };
+    }
+    
+    public Converter<String, Beneficiary> ApplicationConversionServiceFactoryBean.getStringToBeneficiaryConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.howed.heirshare5.domain.Beneficiary>() {
+            public com.howed.heirshare5.domain.Beneficiary convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Beneficiary.class);
+            }
+        };
+    }
+    
+    public Converter<BeneficiaryItemChoice, String> ApplicationConversionServiceFactoryBean.getBeneficiaryItemChoiceToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.howed.heirshare5.domain.BeneficiaryItemChoice, java.lang.String>() {
+            public String convert(BeneficiaryItemChoice beneficiaryItemChoice) {
+                return new StringBuilder().append(beneficiaryItemChoice.getChoicePriority()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, BeneficiaryItemChoice> ApplicationConversionServiceFactoryBean.getIdToBeneficiaryItemChoiceConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.howed.heirshare5.domain.BeneficiaryItemChoice>() {
+            public com.howed.heirshare5.domain.BeneficiaryItemChoice convert(java.lang.Long id) {
+                return beneficiaryItemChoiceService.findBeneficiaryItemChoice(id);
+            }
+        };
+    }
+    
+    public Converter<String, BeneficiaryItemChoice> ApplicationConversionServiceFactoryBean.getStringToBeneficiaryItemChoiceConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.howed.heirshare5.domain.BeneficiaryItemChoice>() {
+            public com.howed.heirshare5.domain.BeneficiaryItemChoice convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), BeneficiaryItemChoice.class);
+            }
+        };
+    }
     
     public Converter<Estate, String> ApplicationConversionServiceFactoryBean.getEstateToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.howed.heirshare5.domain.Estate, java.lang.String>() {
@@ -71,13 +134,46 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<InventoryItem, String> ApplicationConversionServiceFactoryBean.getInventoryItemToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.howed.heirshare5.domain.InventoryItem, java.lang.String>() {
+            public String convert(InventoryItem inventoryItem) {
+                return new StringBuilder().append(inventoryItem.getName()).append(' ').append(inventoryItem.getDescription()).append(' ').append(inventoryItem.getItemValue()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, InventoryItem> ApplicationConversionServiceFactoryBean.getIdToInventoryItemConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.howed.heirshare5.domain.InventoryItem>() {
+            public com.howed.heirshare5.domain.InventoryItem convert(java.lang.Long id) {
+                return inventoryItemService.findInventoryItem(id);
+            }
+        };
+    }
+    
+    public Converter<String, InventoryItem> ApplicationConversionServiceFactoryBean.getStringToInventoryItemConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.howed.heirshare5.domain.InventoryItem>() {
+            public com.howed.heirshare5.domain.InventoryItem convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), InventoryItem.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
+        registry.addConverter(getBeneficiaryToStringConverter());
+        registry.addConverter(getIdToBeneficiaryConverter());
+        registry.addConverter(getStringToBeneficiaryConverter());
+        registry.addConverter(getBeneficiaryItemChoiceToStringConverter());
+        registry.addConverter(getIdToBeneficiaryItemChoiceConverter());
+        registry.addConverter(getStringToBeneficiaryItemChoiceConverter());
         registry.addConverter(getEstateToStringConverter());
         registry.addConverter(getIdToEstateConverter());
         registry.addConverter(getStringToEstateConverter());
         registry.addConverter(getEstateAdministratorToStringConverter());
         registry.addConverter(getIdToEstateAdministratorConverter());
         registry.addConverter(getStringToEstateAdministratorConverter());
+        registry.addConverter(getInventoryItemToStringConverter());
+        registry.addConverter(getIdToInventoryItemConverter());
+        registry.addConverter(getStringToInventoryItemConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

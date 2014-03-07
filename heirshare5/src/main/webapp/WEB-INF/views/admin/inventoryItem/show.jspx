@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_howed_heirshare5_domain_InventoryItem" object="${inventoryitem}" path="/admin/inventoryItem" z="b2Qc+CHHY0z1b/1vhBfnagTi4kg=">
+        <field:display field="name" id="s_com_howed_heirshare5_domain_InventoryItem_name" object="${inventoryitem}" z="zSegqG7RbvDc6jwGTWkq9AvrEJo="/>
+        <field:display field="description" id="s_com_howed_heirshare5_domain_InventoryItem_description" object="${inventoryitem}" z="2xXnXMYuQvWbIhW7COypeG1REOs="/>
+        <field:display field="itemValue" id="s_com_howed_heirshare5_domain_InventoryItem_itemValue" object="${inventoryitem}" z="Rzwz8IeDVhfBqN/i/ujjDJgsCrg="/>
+        <field:display field="estate" id="s_com_howed_heirshare5_domain_InventoryItem_estate" object="${inventoryitem}" z="h6ihR0RXI2uyO06wB0h6iaxQ6Ms="/>
+    </page:show>
+</div>

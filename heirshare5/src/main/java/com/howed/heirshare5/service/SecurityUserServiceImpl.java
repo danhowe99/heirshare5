@@ -61,7 +61,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
         queryInsertUser.executeUpdate();	
     }
 
-    private void createSecurityAuthorityForEstateAdmin(EstateAdministrator estateAdministrator) {
+	private void createSecurityAuthorityForEstateAdmin(EstateAdministrator estateAdministrator) {
         Query queryInsertAuthority = entityManager.createNativeQuery(SQL_INSERT_NEW_AUTHORITY_ESTATE_ADMIN);
         queryInsertAuthority.setParameter(1, estateAdministrator.getEmail());
         queryInsertAuthority.executeUpdate();

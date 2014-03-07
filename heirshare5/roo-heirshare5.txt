@@ -23,30 +23,37 @@ field string --fieldName title --notNull --sizeMax 30 --unique
 field reference --fieldName estateAdministrator --type ~.domain.EstateAdministrator --notNull
 
 //Beneficiary.
-//entity jpa --class ~.domain.Beneficiary --activeRecord false --testAutomatically
-//field string --fieldName email --notNull --sizeMax 30 --unique
-//field reference --fieldName estate --type ~.domain.Estate --notNull
+entity jpa --class ~.domain.Beneficiary --activeRecord false --testAutomatically
+field string --fieldName email --notNull --sizeMax 30 --unique
+field reference --fieldName estate --type ~.domain.Estate --notNull
 
 //InventoryItem.
-//entity jpa --class ~.domain.InventoryItem --activeRecord false --testAutomatically
-//field string --fieldName name --notNull --sizeMax 30 --unique
-//field string --fieldName description --notNull --sizeMax 100
-//field number --type java.lang.Integer --fieldName itemValue --notNull
-//field reference --fieldName estate --type ~.domain.Estate --notNull
+entity jpa --class ~.domain.InventoryItem --activeRecord false --testAutomatically
+field string --fieldName name --notNull --sizeMax 30 --unique
+field string --fieldName description --notNull --sizeMax 100
+field number --type java.lang.Integer --fieldName itemValue --notNull
+field reference --fieldName estate --type ~.domain.Estate --notNull
 
 //BeneficiaryItemChoice.
-//entity jpa --class ~.domain.BeneficiaryItemChoice --activeRecord false --testAutomatically
-//field number --type java.lang.Short --fieldName choicePriority
-//field reference --fieldName inventoryItem --type ~.domain.InventoryItem --notNull
-//field reference --fieldName beneficiary --type ~.domain.Beneficiary --notNull
+entity jpa --class ~.domain.BeneficiaryItemChoice --activeRecord false --testAutomatically
+field number --type java.lang.Short --fieldName choicePriority
+field reference --fieldName inventoryItem --type ~.domain.InventoryItem --notNull
+field reference --fieldName beneficiary --type ~.domain.Beneficiary --notNull
 
 //-----------------------------------------------------------------------------
 //Service layer.
 //-----------------------------------------------------------------------------
 repository jpa --entity ~.domain.EstateAdministrator --interface ~.repository.EstateAdministratorRepository
 repository jpa --entity ~.domain.Estate --interface ~.repository.EstateRepository
+repository jpa --entity ~.domain.Beneficiary --interface ~.repository.BeneficiaryRepository
+repository jpa --entity ~.domain.InventoryItem --interface ~.repository.InventoryItemRepository
+repository jpa --entity ~.domain.BeneficiaryItemChoice --interface ~.repository.BeneficiaryItemChoiceRepository
+
 service type --entity ~.domain.EstateAdministrator --interface ~.service.EstateAdministratorService
 service type --entity ~.domain.Estate --interface ~.service.EstateService
+service type --entity ~.domain.Beneficiary --interface ~.service.BeneficiaryService
+service type --entity ~.domain.InventoryItem --interface ~.service.InventoryItemService
+service type --entity ~.domain.BeneficiaryItemChoice --interface ~.service.BeneficiaryItemChoiceService
 
 //-----------------------------------------------------------------------------
 //Integration testing.
@@ -59,9 +66,9 @@ perform tests
 web mvc setup
 web mvc scaffold --class ~.admin.web.AdminEstateAdministratorController --path /admin/estateAdministrator --backingType ~.domain.EstateAdministrator
 web mvc scaffold --class ~.admin.web.AdminEstateController --path /admin/estate --backingType ~.domain.Estate
-//web mvc scaffold --class ~.admin.web.AdminBeneficiaryController --path /admin/beneficiary --backingType ~.domain.Beneficiary
-//web mvc scaffold --class ~.admin.web.AdminInventoryItemController --path /admin/inventoryItem --backingType ~.domain.InventoryItem
-//web mvc scaffold --class ~.admin.web.AdminBeneficiaryItemChoiceController --path /admin/inventoryItemChoice --backingType ~.domain.BeneficiaryItemChoice
+web mvc scaffold --class ~.admin.web.AdminBeneficiaryController --path /admin/beneficiary --backingType ~.domain.Beneficiary
+web mvc scaffold --class ~.admin.web.AdminInventoryItemController --path /admin/inventoryItem --backingType ~.domain.InventoryItem
+web mvc scaffold --class ~.admin.web.AdminBeneficiaryItemChoiceController --path /admin/beneficiaryItemChoice --backingType ~.domain.BeneficiaryItemChoice
 
 //-----------------------------------------------------------------------------
 //MVC - Estate Admin.
@@ -80,9 +87,9 @@ security setup
 //-----------------------------------------------------------------------------
 selenium test --controller ~.admin.web.AdminEstateAdministratorController
 selenium test --controller ~.admin.web.AdminEstateController
-//selenium test --controller ~.admin.web.AdminBeneficiaryController
-//selenium test --controller ~.admin.web.AdminInventoryItemController
-//selenium test --controller ~.admin.web.AdminBeneficiaryItemChoiceController
+selenium test --controller ~.admin.web.AdminBeneficiaryController
+selenium test --controller ~.admin.web.AdminInventoryItemController
+selenium test --controller ~.admin.web.AdminBeneficiaryItemChoiceController
 
 //-----------------------------------------------------------------------------
 //Web testing - Estate Admin.

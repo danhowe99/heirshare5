@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_howed_heirshare5_domain_Beneficiary" items="${beneficiarys}" z="3w8V2dzVVGJ2nt56L8wb/7MBuHA=">
+        <table:table data="${beneficiarys}" id="l_com_howed_heirshare5_domain_Beneficiary" path="/admin/beneficiary" z="bPIyDGeaCoD01kfH3r1R+31Rxvs=">
+            <table:column id="c_com_howed_heirshare5_domain_Beneficiary_email" property="email" z="8wmT23xQEXwtmSKzp6aij0feMVc="/>
+            <table:column id="c_com_howed_heirshare5_domain_Beneficiary_estate" property="estate" z="FbAymwKjrVil59MJVKEuC94LWlI="/>
+        </table:table>
+    </page:list>
+</div>
