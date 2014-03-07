@@ -1,0 +1,90 @@
+//-----------------------------------------------------------------------------
+//Create project - heirshare5.
+//-----------------------------------------------------------------------------
+project --topLevelPackage com.howed.heirshare5
+
+//-----------------------------------------------------------------------------
+//Set up the data store.
+//-----------------------------------------------------------------------------
+jpa setup --provider HIBERNATE --database MYSQL --userName root --password F00tball --databaseName heirshare5_dev
+
+//-----------------------------------------------------------------------------
+//Domain classes - Definitions. 
+//-----------------------------------------------------------------------------
+
+//EstateAdministrator.
+entity jpa --class ~.domain.EstateAdministrator --activeRecord false --testAutomatically
+field string --fieldName email --notNull --sizeMax 30 --unique
+field string --fieldName password --notNull --sizeMin 6 --sizeMax 10
+
+//Estate.
+entity jpa --class ~.domain.Estate --activeRecord false --testAutomatically
+field string --fieldName title --notNull --sizeMax 30 --unique
+field reference --fieldName estateAdministrator --type ~.domain.EstateAdministrator --notNull
+
+//Beneficiary.
+//entity jpa --class ~.domain.Beneficiary --activeRecord false --testAutomatically
+//field string --fieldName email --notNull --sizeMax 30 --unique
+//field reference --fieldName estate --type ~.domain.Estate --notNull
+
+//InventoryItem.
+//entity jpa --class ~.domain.InventoryItem --activeRecord false --testAutomatically
+//field string --fieldName name --notNull --sizeMax 30 --unique
+//field string --fieldName description --notNull --sizeMax 100
+//field number --type java.lang.Integer --fieldName itemValue --notNull
+//field reference --fieldName estate --type ~.domain.Estate --notNull
+
+//BeneficiaryItemChoice.
+//entity jpa --class ~.domain.BeneficiaryItemChoice --activeRecord false --testAutomatically
+//field number --type java.lang.Short --fieldName choicePriority
+//field reference --fieldName inventoryItem --type ~.domain.InventoryItem --notNull
+//field reference --fieldName beneficiary --type ~.domain.Beneficiary --notNull
+
+//-----------------------------------------------------------------------------
+//Service layer.
+//-----------------------------------------------------------------------------
+repository jpa --entity ~.domain.EstateAdministrator --interface ~.repository.EstateAdministratorRepository
+repository jpa --entity ~.domain.Estate --interface ~.repository.EstateRepository
+service type --entity ~.domain.EstateAdministrator --interface ~.service.EstateAdministratorService
+service type --entity ~.domain.Estate --interface ~.service.EstateService
+
+//-----------------------------------------------------------------------------
+//Integration testing.
+//-----------------------------------------------------------------------------
+perform tests
+
+//-----------------------------------------------------------------------------
+//MVC - Admin.
+//-----------------------------------------------------------------------------
+web mvc setup
+web mvc scaffold --class ~.admin.web.AdminEstateAdministratorController --path /admin/estateAdministrator --backingType ~.domain.EstateAdministrator
+web mvc scaffold --class ~.admin.web.AdminEstateController --path /admin/estate --backingType ~.domain.Estate
+//web mvc scaffold --class ~.admin.web.AdminBeneficiaryController --path /admin/beneficiary --backingType ~.domain.Beneficiary
+//web mvc scaffold --class ~.admin.web.AdminInventoryItemController --path /admin/inventoryItem --backingType ~.domain.InventoryItem
+//web mvc scaffold --class ~.admin.web.AdminBeneficiaryItemChoiceController --path /admin/inventoryItemChoice --backingType ~.domain.BeneficiaryItemChoice
+
+//-----------------------------------------------------------------------------
+//MVC - Estate Admin.
+//-----------------------------------------------------------------------------
+//web mvc scaffold --class ~.estateAdmin.web.EstateAdministratorController --path /estateAdmin/estateAdministrator --backingType ~.domain.EstateAdministrator --disallowedOperations delete
+//web mvc scaffold --class ~.estateAdmin.web.EstateController --path /estateAdmin/estate --backingType ~.domain.Estate
+//web mvc scaffold --class ~.estateAdmin.web.BeneficiaryController --path /estateAdmin/beneficiary --backingType ~.domain.Beneficiary
+
+//-----------------------------------------------------------------------------
+//Security.
+//-----------------------------------------------------------------------------
+security setup
+
+//-----------------------------------------------------------------------------
+//Web testing - Admin.
+//-----------------------------------------------------------------------------
+selenium test --controller ~.admin.web.AdminEstateAdministratorController
+selenium test --controller ~.admin.web.AdminEstateController
+//selenium test --controller ~.admin.web.AdminBeneficiaryController
+//selenium test --controller ~.admin.web.AdminInventoryItemController
+//selenium test --controller ~.admin.web.AdminBeneficiaryItemChoiceController
+
+//-----------------------------------------------------------------------------
+//Web testing - Estate Admin.
+//-----------------------------------------------------------------------------
+//selenium test --controller ~.estateAdmin.web.EstateAdministratorController
