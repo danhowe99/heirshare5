@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_howed_heirshare5_domain_EstateAdministrator" modelAttribute="estateAdministrator" path="/estateAdmin/estateAdministrator" versionField="Version" z="PF529ejBfEPo7qlCb88otFnZvDI=">
+        <field:input field="email" id="c_com_howed_heirshare5_domain_EstateAdministrator_email" max="30" required="true" validationMessageCode="field_invalid_email" z="jpkSU43AxoeupO1gwsg1ZNiGsn0="/>
+        <field:input field="password" id="c_com_howed_heirshare5_domain_EstateAdministrator_password" max="10" min="6" required="true" z="UFZv+tmBzDf9D3S6lzPwXY3lQcs="/>
+    </form:update>
+</div>

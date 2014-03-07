@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="estateAdmin/estate/list">
+        <put-attribute name="body" value="/WEB-INF/views/estateAdmin/estate/list.jspx"/>
+    </definition>
+<definition extends="default" name="estateAdmin/estate/show">
+        <put-attribute name="body" value="/WEB-INF/views/estateAdmin/estate/show.jspx"/>
+    </definition>
+<definition extends="default" name="estateAdmin/estate/create">
+        <put-attribute name="body" value="/WEB-INF/views/estateAdmin/estate/create.jspx"/>
+    </definition>
+<definition extends="default" name="estateAdmin/estate/update">
+        <put-attribute name="body" value="/WEB-INF/views/estateAdmin/estate/update.jspx"/>
+    </definition>
+</tiles-definitions>

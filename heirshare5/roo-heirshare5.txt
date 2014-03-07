@@ -73,9 +73,9 @@ web mvc scaffold --class ~.admin.web.AdminBeneficiaryItemChoiceController --path
 //-----------------------------------------------------------------------------
 //MVC - Estate Admin.
 //-----------------------------------------------------------------------------
-//web mvc scaffold --class ~.estateAdmin.web.EstateAdministratorController --path /estateAdmin/estateAdministrator --backingType ~.domain.EstateAdministrator --disallowedOperations delete
-//web mvc scaffold --class ~.estateAdmin.web.EstateController --path /estateAdmin/estate --backingType ~.domain.Estate
-//web mvc scaffold --class ~.estateAdmin.web.BeneficiaryController --path /estateAdmin/beneficiary --backingType ~.domain.Beneficiary
+web mvc scaffold --class ~.estateAdmin.web.EstateAdministratorController --path /estateAdmin/estateAdministrator --backingType ~.domain.EstateAdministrator --disallowedOperations delete
+web mvc scaffold --class ~.estateAdmin.web.EstateController --path /estateAdmin/estate --backingType ~.domain.Estate
+web mvc scaffold --class ~.estateAdmin.web.BeneficiaryController --path /estateAdmin/beneficiary --backingType ~.domain.Beneficiary
 
 //-----------------------------------------------------------------------------
 //Security.
@@ -94,4 +94,6 @@ selenium test --controller ~.admin.web.AdminBeneficiaryItemChoiceController
 //-----------------------------------------------------------------------------
 //Web testing - Estate Admin.
 //-----------------------------------------------------------------------------
-//selenium test --controller ~.estateAdmin.web.EstateAdministratorController
+selenium test --controller ~.estateAdmin.web.EstateAdministratorController
+selenium test --controller ~.estateAdmin.web.EstateController
+selenium test --controller ~.estateAdmin.web.BeneficiaryController

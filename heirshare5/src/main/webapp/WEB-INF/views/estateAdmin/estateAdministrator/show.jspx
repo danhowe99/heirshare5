@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show delete="false" id="ps_com_howed_heirshare5_domain_EstateAdministrator" object="${estateadministrator}" path="/estateAdmin/estateAdministrator" z="W+B7uHDW1joxqQma4DIEWYra0og=">
+        <field:display field="email" id="s_com_howed_heirshare5_domain_EstateAdministrator_email" object="${estateadministrator}" z="Phr3WjKSdPhz0BhTiHJVHnWE80E="/>
+        <field:display field="password" id="s_com_howed_heirshare5_domain_EstateAdministrator_password" object="${estateadministrator}" z="d1N8alrNU+ijpIljGf2j9nEQhsg="/>
+    </page:show>
+</div>
