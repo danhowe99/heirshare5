@@ -4,13 +4,9 @@
 package com.howed.heirshare5.estateadmin.web;
 
 import com.howed.heirshare5.domain.Estate;
-import com.howed.heirshare5.domain.EstateAdministrator;
 import com.howed.heirshare5.estateadmin.web.EstateController;
-import com.howed.heirshare5.service.EstateAdministratorService;
 import com.howed.heirshare5.service.EstateService;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +24,6 @@ privileged aspect EstateController_Roo_Controller {
     @Autowired
     EstateService EstateController.estateService;
     
-    @Autowired
-    EstateAdministratorService EstateController.estateAdministratorService;
-    
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String EstateController.create(@Valid Estate estate, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -40,17 +33,6 @@ privileged aspect EstateController_Roo_Controller {
         uiModel.asMap().clear();
         estateService.saveEstate(estate);
         return "redirect:/estateAdmin/estate/" + encodeUrlPathSegment(estate.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(params = "form", produces = "text/html")
-    public String EstateController.createForm(Model uiModel) {
-        populateEditForm(uiModel, new Estate());
-        List<String[]> dependencies = new ArrayList<String[]>();
-        if (estateAdministratorService.countAllEstateAdministrators() == 0) {
-            dependencies.add(new String[] { "estateadministrator", "admin/estateAdministrator" });
-        }
-        uiModel.addAttribute("dependencies", dependencies);
-        return "estateAdmin/estate/create";
     }
     
     @RequestMapping(value = "/{id}", produces = "text/html")
@@ -99,11 +81,6 @@ privileged aspect EstateController_Roo_Controller {
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/estateAdmin/estate";
-    }
-    
-    void EstateController.populateEditForm(Model uiModel, Estate estate) {
-        uiModel.addAttribute("estate", estate);
-        uiModel.addAttribute("estateadministrators", estateAdministratorService.findAllEstateAdministrators());
     }
     
     String EstateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

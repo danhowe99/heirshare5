@@ -34,7 +34,6 @@ privileged aspect EstateAdministratorDataOnDemand_Roo_DataOnDemand {
     public EstateAdministrator EstateAdministratorDataOnDemand.getNewTransientEstateAdministrator(int index) {
         EstateAdministrator obj = new EstateAdministrator();
         setEmail(obj, index);
-        setPassword(obj, index);
         return obj;
     }
     
@@ -44,14 +43,6 @@ privileged aspect EstateAdministratorDataOnDemand_Roo_DataOnDemand {
             email = new Random().nextInt(10) + email.substring(1, 30);
         }
         obj.setEmail(email);
-    }
-    
-    public void EstateAdministratorDataOnDemand.setPassword(EstateAdministrator obj, int index) {
-        String password = "password_" + index;
-        if (password.length() > 10) {
-            password = password.substring(0, 10);
-        }
-        obj.setPassword(password);
     }
     
     public EstateAdministrator EstateAdministratorDataOnDemand.getSpecificEstateAdministrator(int index) {

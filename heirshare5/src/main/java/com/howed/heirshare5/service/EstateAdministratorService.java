@@ -6,5 +6,5 @@ import com.howed.heirshare5.domain.EstateAdministrator;
 @RooService(domainTypes = { com.howed.heirshare5.domain.EstateAdministrator.class })
 public interface EstateAdministratorService {
 
-    public abstract void saveEstateAdministrator(EstateAdministrator estateAdministrator);    
+    public abstract EstateAdministrator findEstateAdministratorByEmail(String email);    
 }
