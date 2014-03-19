@@ -110,14 +110,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<EstateAdministrator, String> ApplicationConversionServiceFactoryBean.getEstateAdministratorToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.howed.heirshare5.domain.EstateAdministrator, java.lang.String>() {
-            public String convert(EstateAdministrator estateAdministrator) {
-                return new StringBuilder().append(estateAdministrator.getEmail()).append(' ').append(estateAdministrator.getPassword()).toString();
-            }
-        };
-    }
-    
     public Converter<Long, EstateAdministrator> ApplicationConversionServiceFactoryBean.getIdToEstateAdministratorConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.howed.heirshare5.domain.EstateAdministrator>() {
             public com.howed.heirshare5.domain.EstateAdministrator convert(java.lang.Long id) {

@@ -4,6 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_howed_heirshare5_domain_EstateAdministrator" object="${estateadministrator}" path="/admin/estateAdministrator" z="A4oSJv12EnCz4lQOTX/+5ldRe8A=">
         <field:display field="email" id="s_com_howed_heirshare5_domain_EstateAdministrator_email" object="${estateadministrator}" z="Phr3WjKSdPhz0BhTiHJVHnWE80E="/>
-        <field:display field="password" id="s_com_howed_heirshare5_domain_EstateAdministrator_password" object="${estateadministrator}" z="d1N8alrNU+ijpIljGf2j9nEQhsg="/>
+        <field:display field="password" id="s_com_howed_heirshare5_domain_EstateAdministrator_password" object="${estateadministrator}" render="false"/>
     </page:show>
 </div>

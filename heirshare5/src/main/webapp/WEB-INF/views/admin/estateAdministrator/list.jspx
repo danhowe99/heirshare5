@@ -5,7 +5,7 @@
     <page:list id="pl_com_howed_heirshare5_domain_EstateAdministrator" items="${estateadministrators}" z="fNQ+VHy+NJavLXs6/RfIhqevRAI=">
         <table:table data="${estateadministrators}" id="l_com_howed_heirshare5_domain_EstateAdministrator" path="/admin/estateAdministrator" z="GwhU8mgy2v5Lsjx117eA1p4/nhM=">
             <table:column id="c_com_howed_heirshare5_domain_EstateAdministrator_email" property="email" z="L0oMJNd+ILwGXh9U/8+71n8MHNI="/>
-            <table:column id="c_com_howed_heirshare5_domain_EstateAdministrator_password" property="password" z="KMD3ggIwipsQYJfHykpx8t65p+A="/>
+            <table:column id="c_com_howed_heirshare5_domain_EstateAdministrator_password" property="password" render="false"/>
         </table:table>
     </page:list>
 </div>

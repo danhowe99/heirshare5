@@ -31,10 +31,10 @@ public class EstateController {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
             uiModel.addAttribute("estates", estateService.findEstateEntries(firstResult, sizeNo, getEstateAdministratorForSession()));
-            float nrOfPages = (float) estateService.countAllEstates() / sizeNo;
+            float nrOfPages = (float) estateService.countAllEstates(getEstateAdministratorForSession()) / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("estates", estateService.findAllEstates());
+            uiModel.addAttribute("estates", estateService.findAllEstates(getEstateAdministratorForSession()));
         }
         return "estateAdmin/estate/list";
     }

@@ -10,4 +10,6 @@ import com.howed.heirshare5.domain.EstateAdministrator;
 public interface EstateService {
 	
 	public abstract List<Estate> findEstateEntries(int firstResult, int sizeNo, EstateAdministrator estateAdministrator);
+	public abstract long countAllEstates(EstateAdministrator estateAdministrator);
+	public abstract List<Estate> findAllEstates(EstateAdministrator estateAdministrator);
 }
