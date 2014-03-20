@@ -38,9 +38,15 @@ privileged aspect EstateDataOnDemand_Roo_DataOnDemand {
     
     public Estate EstateDataOnDemand.getNewTransientEstate(int index) {
         Estate obj = new Estate();
+        setDefaultAdministratorEstate(obj, index);
         setEstateAdministrator(obj, index);
         setTitle(obj, index);
         return obj;
+    }
+    
+    public void EstateDataOnDemand.setDefaultAdministratorEstate(Estate obj, int index) {
+        Boolean defaultAdministratorEstate = true;
+        obj.setDefaultAdministratorEstate(defaultAdministratorEstate);
     }
     
     public void EstateDataOnDemand.setEstateAdministrator(Estate obj, int index) {

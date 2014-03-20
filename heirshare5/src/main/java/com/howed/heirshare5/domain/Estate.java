@@ -24,4 +24,7 @@ public class Estate {
     @NotNull
     @ManyToOne
     private EstateAdministrator estateAdministrator;
+    
+    @NotNull
+    private boolean defaultAdministratorEstate = true;
 }

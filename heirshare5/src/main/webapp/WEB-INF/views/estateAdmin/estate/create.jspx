@@ -7,7 +7,8 @@
         <input id="c_com_howed_heirshare5_domain_EstateAdministrator_Id" name="estateAdministrator.id" type="hidden" value="${estate.estateAdministrator.id}"/>
         <input id="c_com_howed_heirshare5_domain_EstateAdministrator_Email" name="estateAdministrator.email" type="hidden" value="${estate.estateAdministrator.email}"/>
         <input id="c_com_howed_heirshare5_domain_EstateAdministrator_Version" name="estateAdministrator.version" type="hidden" value="${estate.estateAdministrator.version}"/>
-        <field:select field="estateAdministrator" id="c_com_howed_heirshare5_domain_Estate_estateAdministrator" itemValue="id" items="${estateadministrators}" path="/admin/estateAdministrator" required="false" render="false"/>
+        <field:select field="estateAdministrator" id="c_com_howed_heirshare5_domain_Estate_estateAdministrator" itemValue="id" items="${estateadministrators}" path="/admin/estateAdministrator" render="false" required="false"/>
+        <field:checkbox field="defaultAdministratorEstate" id="c_com_howed_heirshare5_domain_Estate_defaultAdministratorEstate" z="F04XYuZBl5hMaCMGmHVVEgsh5Hc="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_howed_heirshare5_domain_Estate" render="false"/>
 </div>

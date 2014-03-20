@@ -6,6 +6,7 @@
         <table:table data="${estates}" id="l_com_howed_heirshare5_domain_Estate" path="/admin/estate" z="aTS8zHyXqTN+sco7jVeOObPAuWY=">
             <table:column id="c_com_howed_heirshare5_domain_Estate_title" property="title" z="5fS1FV1zizE5b0rEa9wcp9UKBw0="/>
             <table:column id="c_com_howed_heirshare5_domain_Estate_estateAdministrator" property="estateAdministrator" z="mWYagNEwwTpsoJCGffK4DNsMkR4="/>
+            <table:column id="c_com_howed_heirshare5_domain_Estate_defaultAdministratorEstate" property="defaultAdministratorEstate" z="VYEULI9tUbAzgSk+45u1cryFaaM="/>
         </table:table>
     </page:list>
 </div>

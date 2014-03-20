@@ -40,12 +40,4 @@ privileged aspect EstateServiceImpl_Roo_Service {
         return estateRepository.findAll(new org.springframework.data.domain.PageRequest(firstResult / maxResults, maxResults)).getContent();
     }
     
-    public void EstateServiceImpl.saveEstate(Estate estate) {
-        estateRepository.save(estate);
-    }
-    
-    public Estate EstateServiceImpl.updateEstate(Estate estate) {
-        return estateRepository.save(estate);
-    }
-    
 }

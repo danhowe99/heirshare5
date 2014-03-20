@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.roo.addon.layers.repository.jpa.RooJpaRepository;
 
 import com.howed.heirshare5.domain.Estate;
+import com.howed.heirshare5.domain.EstateAdministrator;
 
 @RooJpaRepository(domainType = Estate.class)
 public interface EstateRepository {
@@ -46,4 +47,7 @@ public interface EstateRepository {
 	
 	@Query(value = FIND_ALL_ESTATES, nativeQuery = true)
 	public List<Estate> findAllEstates(@Param("email") String email);
+	
+	@Query
+	public List<Estate> findByDefaultAdministratorEstateAndEstateAdministrator(boolean defaultEstate, EstateAdministrator estateAdmin);
 }

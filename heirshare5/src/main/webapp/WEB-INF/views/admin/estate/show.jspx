@@ -5,5 +5,6 @@
     <page:show id="ps_com_howed_heirshare5_domain_Estate" object="${estate}" path="/admin/estate" z="E5IJrHjRqVZObiujnk2KBLMe73U=">
         <field:display field="title" id="s_com_howed_heirshare5_domain_Estate_title" object="${estate}" z="EIdguOUQH2brqlv98Yh4Il9rrms="/>
         <field:display field="estateAdministrator" id="s_com_howed_heirshare5_domain_Estate_estateAdministrator" object="${estate}" z="UzDQDapPFUirBO0oBBpQz3PZl1A="/>
+        <field:display field="defaultAdministratorEstate" id="s_com_howed_heirshare5_domain_Estate_defaultAdministratorEstate" object="${estate}" z="znjP9Zdvzw9gZX79ELsBseJC2bw="/>
     </page:show>
 </div>

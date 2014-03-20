@@ -24,4 +24,12 @@ privileged aspect Estate_Roo_JavaBean {
         this.estateAdministrator = estateAdministrator;
     }
     
+    public boolean Estate.isDefaultAdministratorEstate() {
+        return this.defaultAdministratorEstate;
+    }
+    
+    public void Estate.setDefaultAdministratorEstate(boolean defaultAdministratorEstate) {
+        this.defaultAdministratorEstate = defaultAdministratorEstate;
+    }
+    
 }

@@ -24,4 +24,27 @@ public class EstateServiceImpl implements EstateService {
 			EstateAdministrator estateAdministrator) {
 		return estateRepository.findEstateEntries(firstResult, sizeNo, estateAdministrator.getEmail());
 	}
+
+	@Override
+    public void saveEstate(Estate estate) {
+		setOtherDefaultEstatesToFalse(estate);
+		estateRepository.save(estate);
+	}
+	
+	@Override
+    public Estate updateEstate(Estate estate) {
+		setOtherDefaultEstatesToFalse(estate);
+		return estateRepository.save(estate);
+	}
+	
+	private void setOtherDefaultEstatesToFalse(Estate estate) {
+		if (estate.isDefaultAdministratorEstate()) {
+			List<Estate> defaultEstates = 
+					estateRepository.findByDefaultAdministratorEstateAndEstateAdministrator(true, estate.getEstateAdministrator());
+			for (Estate e : defaultEstates) {
+				e.setDefaultAdministratorEstate(false);
+				estateRepository.save(e);
+			}
+		}
+	}
 }

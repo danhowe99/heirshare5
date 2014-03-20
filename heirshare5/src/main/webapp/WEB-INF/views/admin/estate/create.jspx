@@ -5,6 +5,7 @@
     <form:create id="fc_com_howed_heirshare5_domain_Estate" modelAttribute="estate" path="/admin/estate" render="${empty dependencies}" z="cTt/Den/d4MTBHTRvVIG/7HksEg=">
         <field:input field="title" id="c_com_howed_heirshare5_domain_Estate_title" max="30" required="true" z="Ov8AACuL+CFQ8ardPgdiAOHefoU="/>
         <field:select field="estateAdministrator" id="c_com_howed_heirshare5_domain_Estate_estateAdministrator" itemValue="id" items="${estateadministrators}" path="/admin/estateAdministrator" required="true" z="FTA+XNeM+Lk6pOmi9P6N5dnizTw="/>
+        <field:checkbox field="defaultAdministratorEstate" id="c_com_howed_heirshare5_domain_Estate_defaultAdministratorEstate" z="F04XYuZBl5hMaCMGmHVVEgsh5Hc="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_howed_heirshare5_domain_Estate" render="${not empty dependencies}" z="DDt5oF0ydOEvy/OqK7OpAPBhRIQ="/>
 </div>
