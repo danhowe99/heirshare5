@@ -9,7 +9,7 @@ import com.howed.heirshare5.domain.EstateAdministrator;
 @RooService(domainTypes = { com.howed.heirshare5.domain.Estate.class })
 public interface EstateService {
 	
-	public abstract List<Estate> findEstateEntries(int firstResult, int sizeNo, EstateAdministrator estateAdministrator);
 	public abstract long countAllEstates(EstateAdministrator estateAdministrator);
 	public abstract List<Estate> findAllEstates(EstateAdministrator estateAdministrator);
+	public abstract List<Estate> findEstateEntries(int firstResult, int sizeNo, EstateAdministrator estateAdministrator);
 }

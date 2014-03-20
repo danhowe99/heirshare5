@@ -9,12 +9,6 @@ import com.howed.heirshare5.domain.EstateAdministrator;
 public class EstateServiceImpl implements EstateService {
 
 	@Override
-	public List<Estate> findEstateEntries(int firstResult, int sizeNo,
-			EstateAdministrator estateAdministrator) {
-		return estateRepository.findEstateEntries(firstResult, sizeNo, estateAdministrator.getEmail());
-	}
-
-	@Override
 	public long countAllEstates(EstateAdministrator estateAdministrator) {
 		BigInteger count = estateRepository.countAllEstates(estateAdministrator.getEmail());
 		return count.longValue();
@@ -23,5 +17,11 @@ public class EstateServiceImpl implements EstateService {
 	@Override
 	public List<Estate> findAllEstates(EstateAdministrator estateAdministrator) {
 		return estateRepository.findAllEstates(estateAdministrator.getEmail());
+	}
+
+	@Override
+	public List<Estate> findEstateEntries(int firstResult, int sizeNo,
+			EstateAdministrator estateAdministrator) {
+		return estateRepository.findEstateEntries(firstResult, sizeNo, estateAdministrator.getEmail());
 	}
 }

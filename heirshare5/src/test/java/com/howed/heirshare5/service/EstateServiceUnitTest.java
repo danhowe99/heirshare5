@@ -22,7 +22,7 @@ import com.howed.heirshare5.domain.EstateAdministrator;
 @Transactional
 public class EstateServiceUnitTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-	private Long estateAdminId;
+	private Long estateAdmin1Id;
 	
 	@Autowired
 	EstateService estateService;
@@ -32,32 +32,60 @@ public class EstateServiceUnitTest extends AbstractTransactionalJUnit4SpringCont
 	
 	@Before
 	public void before() {
-		EstateAdministrator estateAdmin = createAndSaveEstateAdministrator();
-		Estate estate = createAndSaveEstate(estateAdmin);
-		Assert.assertNotNull(estate);
+		EstateAdministrator estateAdmin1 = createAndSaveEstateAdministrator("Estate admin 1");
+		estateAdmin1Id = estateAdmin1.getId();
+		EstateAdministrator estateAdmin2 = createAndSaveEstateAdministrator("Estate admin 2");
+		createAndSaveEstate("Estate 1 (admin 1)", estateAdmin1);
+		createAndSaveEstate("Estate 2 (admin 1)", estateAdmin1);
+		createAndSaveEstate("Estate 3 (admin 1)", estateAdmin1);
+		createAndSaveEstate("Estate 4 (admin 1)", estateAdmin1);
+		createAndSaveEstate("Estate 5 (admin 1)", estateAdmin1);
+		createAndSaveEstate("Estate 6 (admin 2)", estateAdmin2);
+	}
+	
+	@Test
+	public void testCountAllEstates() {
+		EstateAdministrator estateAdmin1 = estateAdministratorService.findEstateAdministrator(estateAdmin1Id);
+		Assert.assertNotNull(estateAdmin1);
+		long estateCount = estateService.countAllEstates(estateAdmin1);
+		Assert.assertEquals(5, estateCount);
+	}
+	
+	@Test
+	public void testFindAllEstates() {
+		EstateAdministrator estateAdmin1 = estateAdministratorService.findEstateAdministrator(estateAdmin1Id);
+		Assert.assertNotNull(estateAdmin1);
+		List<Estate> estates = estateService.findEstateEntries(0, 10, estateAdmin1);
+		Assert.assertNotNull(estates);
+		Assert.assertEquals(5, estates.size());
 	}
 	
 	@Test
 	public void testFindEstateEntriesForEstateAdministrator() {
-		EstateAdministrator estateAdmin = estateAdministratorService.findEstateAdministrator(estateAdminId);
-		Assert.assertNotNull(estateAdmin);
-		List<Estate> estates = estateService.findEstateEntries(0, 10, estateAdmin);
+		EstateAdministrator estateAdmin1 = estateAdministratorService.findEstateAdministrator(estateAdmin1Id);
+		Assert.assertNotNull(estateAdmin1);
+		List<Estate> estates = estateService.findEstateEntries(1, 2, estateAdmin1);
 		Assert.assertNotNull(estates);
-		Assert.assertEquals(1, estates.size());
+		Assert.assertEquals(2, estates.size());
+		Estate estate2 = estates.get(0);
+		Assert.assertNotNull(estate2);
+		Assert.assertEquals("Estate 2 (admin 1)", estate2.getTitle());
+		EstateAdministrator estateAdmin = estate2.getEstateAdministrator();
+		Assert.assertNotNull(estateAdmin);
+		Assert.assertEquals("Estate admin 1", estateAdmin.getEmail());
 	}
 	
-	private EstateAdministrator createAndSaveEstateAdministrator() {
+	private EstateAdministrator createAndSaveEstateAdministrator(String email) {
 		EstateAdministrator estateAdmin = new EstateAdministrator();
-		estateAdmin.setEmail("Estate admin email");
+		estateAdmin.setEmail(email);
 		estateAdmin.setPassword("password");
 		estateAdministratorService.saveEstateAdministrator(estateAdmin);
-		estateAdminId = estateAdmin.getId();
 		return estateAdmin;
 	}
 	
-	private Estate createAndSaveEstate(EstateAdministrator estateAdmin) {
+	private Estate createAndSaveEstate(String title, EstateAdministrator estateAdmin) {
 		Estate estate = new Estate();
-		estate.setTitle("Estate");
+		estate.setTitle(title);
 		estate.setEstateAdministrator(estateAdmin);
 		estateService.saveEstate(estate);
 		return estate;
