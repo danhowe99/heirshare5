@@ -20,6 +20,7 @@ field string --fieldName password --notNull --sizeMin 6 --sizeMax 10
 //Estate.
 entity jpa --class ~.domain.Estate --activeRecord false --testAutomatically
 field string --fieldName title --notNull --sizeMax 30 --unique
+field boolean --fieldName defaultAdministratorEstate --notNull true
 field reference --fieldName estateAdministrator --type ~.domain.EstateAdministrator --notNull
 
 //Beneficiary.
@@ -76,6 +77,7 @@ web mvc scaffold --class ~.admin.web.AdminBeneficiaryItemChoiceController --path
 web mvc scaffold --class ~.estateAdmin.web.EstateAdministratorController --path /estateAdmin/estateAdministrator --backingType ~.domain.EstateAdministrator --disallowedOperations delete
 web mvc scaffold --class ~.estateAdmin.web.EstateController --path /estateAdmin/estate --backingType ~.domain.Estate
 web mvc scaffold --class ~.estateAdmin.web.BeneficiaryController --path /estateAdmin/beneficiary --backingType ~.domain.Beneficiary
+web mvc scaffold --class ~.estateAdmin.web.InventoryItemController --path /estateAdmin/inventoryItem --backingType ~.domain.InventoryItem
 
 //-----------------------------------------------------------------------------
 //Security.
@@ -97,3 +99,4 @@ selenium test --controller ~.admin.web.AdminBeneficiaryItemChoiceController
 selenium test --controller ~.estateAdmin.web.EstateAdministratorController
 selenium test --controller ~.estateAdmin.web.EstateController
 selenium test --controller ~.estateAdmin.web.BeneficiaryController
+selenium test --controller ~.estateAdmin.web.InventoryItemController

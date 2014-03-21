@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_howed_heirshare5_domain_InventoryItem" items="${inventoryitems}" z="drcWCgoPDfzfT48dHkf0uJivdPY=">
+        <table:table data="${inventoryitems}" id="l_com_howed_heirshare5_domain_InventoryItem" path="/estateAdmin/inventoryItem" z="N4icrEBNQedwKeAqZrsVtbe0lFg=">
+            <table:column id="c_com_howed_heirshare5_domain_InventoryItem_name" property="name" z="rBtY1qFJOdl/Jp43nGHapth0l5I="/>
+            <table:column id="c_com_howed_heirshare5_domain_InventoryItem_description" property="description" z="IQTMwQU7XyoBg6SfwOy9ZdI7V6E="/>
+            <table:column id="c_com_howed_heirshare5_domain_InventoryItem_itemValue" property="itemValue" z="AwPihrV6wEpqMleEtvhjHzlndnw="/>
+            <table:column id="c_com_howed_heirshare5_domain_InventoryItem_estate" property="estate" z="++srOB549ybqx9Dc0/55Qc4Wo80="/>
+        </table:table>
+    </page:list>
+</div>

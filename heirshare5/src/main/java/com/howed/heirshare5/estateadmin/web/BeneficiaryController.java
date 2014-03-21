@@ -1,7 +1,4 @@
 package com.howed.heirshare5.estateadmin.web;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
@@ -24,8 +21,9 @@ public class BeneficiaryController {
 
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
-        populateEditForm(uiModel, createNewBeneficiaryWithDefaultEstate());
-        uiModel.addAttribute("dependencies", retrieveEstateDependencies());
+    	EstateAdministrator estateAdmin = controllerUtil.getEstateAdministratorForSession();
+        populateEditForm(uiModel, createNewBeneficiaryWithDefaultEstate(estateAdmin));
+        uiModel.addAttribute("dependencies", controllerUtil.retrieveEstateDependencies(estateAdmin));
         return "estateAdmin/beneficiary/create";
     }
 
@@ -48,18 +46,9 @@ public class BeneficiaryController {
         uiModel.addAttribute("estates", estateService.findAllEstates(controllerUtil.getEstateAdministratorForSession()));
     }
     
-    private Beneficiary createNewBeneficiaryWithDefaultEstate() {
+    private Beneficiary createNewBeneficiaryWithDefaultEstate(EstateAdministrator estateAdmin) {
     	Beneficiary beneficiary = new Beneficiary();
-    	EstateAdministrator estateAdmin = controllerUtil.getEstateAdministratorForSession();
-    	beneficiary.setEstate(controllerUtil.findDefaultEstateForSessionEstateAdmin(estateAdmin));
+    	beneficiary.setEstate(controllerUtil.findDefaultEstate(estateAdmin));
     	return beneficiary;
-    }
-    
-    private List<String[]> retrieveEstateDependencies() {
-        List<String[]> dependencies = new ArrayList<String[]>();
-        if (estateService.countAllEstates(controllerUtil.getEstateAdministratorForSession()) == 0) {
-            dependencies.add(new String[] { "estate", "admin/estate" });
-        }
-        return dependencies;
-    }
+    }    
 }

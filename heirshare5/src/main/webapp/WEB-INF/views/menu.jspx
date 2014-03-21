@@ -16,10 +16,7 @@
                 <menu:item id="i_beneficiary_new" messageCode="global_menu_new" url="/admin/beneficiary?form"/>
                 <menu:item id="i_beneficiary_list" messageCode="global_menu_list" url="/admin/beneficiary?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
             </menu:category>
-            <menu:category id="c_inventoryitem" z="fnywkllb4elYwrYPM9nXtK97l18=">
-                <menu:item id="i_inventoryitem_new" messageCode="global_menu_new" url="/admin/inventoryItem?form" z="nOAKZFbJJoBozzdLBFt1ta8xJXw="/>
-                <menu:item id="i_inventoryitem_list" messageCode="global_menu_list" url="/admin/inventoryItem?page=1&amp;size=${empty param.size ? 10 : param.size}" z="GHPM/SN4QxjYwi33bZVP/Dhpv24="/>
-            </menu:category>
+            <menu:category id="c_inventoryitem"/>
             <menu:category id="c_beneficiaryitemchoice" z="FAt5UbeiqkkpEurjRWAb4oD/MJY=">
                 <menu:item id="i_beneficiaryitemchoice_new" messageCode="global_menu_new" url="/admin/inventoryItemChoice?form" z="D+vSz1YglNiLdHCO6cGDIC0JsSM="/>
                 <menu:item id="i_beneficiaryitemchoice_list" messageCode="global_menu_list" url="/admin/inventoryItemChoice?page=1&amp;size=${empty param.size ? 10 : param.size}" z="sJr75wr/9cV1aoME85MAPgsULb0="/>
@@ -36,6 +33,10 @@
             <menu:category id="c_beneficiary">
                 <menu:item id="i_beneficiary_new" messageCode="global_menu_new" url="/estateAdmin/beneficiary?form"/>
                 <menu:item id="i_beneficiary_list" messageCode="global_menu_list" url="/estateAdmin/beneficiary?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+            </menu:category>
+            <menu:category id="c_inventoryitem">
+                <menu:item id="i_inventoryitem_new" messageCode="global_menu_new" url="/estateAdmin/inventoryItem?form"/>
+                <menu:item id="i_inventoryitem_list" messageCode="global_menu_list" url="/estateAdmin/inventoryItem?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
             </menu:category>
         </sec:authorize>
         <menu:category id="c_estateadmin">
