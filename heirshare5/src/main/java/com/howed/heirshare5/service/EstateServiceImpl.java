@@ -26,6 +26,12 @@ public class EstateServiceImpl implements EstateService {
 	}
 
 	@Override
+	public List<Estate> findByDefaultAdministratorEstateAndEstateAdministrator(
+			boolean defaultEstate, EstateAdministrator estateAdmin) {
+		return estateRepository.findByDefaultAdministratorEstateAndEstateAdministrator(true, estateAdmin);
+	}
+	
+	@Override
     public void saveEstate(Estate estate) {
 		setOtherDefaultEstatesToFalse(estate);
 		estateRepository.save(estate);
@@ -40,7 +46,7 @@ public class EstateServiceImpl implements EstateService {
 	private void setOtherDefaultEstatesToFalse(Estate estate) {
 		if (estate.isDefaultAdministratorEstate()) {
 			List<Estate> defaultEstates = 
-					estateRepository.findByDefaultAdministratorEstateAndEstateAdministrator(true, estate.getEstateAdministrator());
+					findByDefaultAdministratorEstateAndEstateAdministrator(true, estate.getEstateAdministrator());
 			for (Estate e : defaultEstates) {
 				e.setDefaultAdministratorEstate(false);
 				estateRepository.save(e);

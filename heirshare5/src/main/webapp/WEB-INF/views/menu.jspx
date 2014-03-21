@@ -12,7 +12,10 @@
                 <menu:item id="i_estate_new" messageCode="global_menu_new" url="/admin/estate?form"/>
                 <menu:item id="i_estate_list" messageCode="global_menu_list" url="/admin/estate?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
             </menu:category>
-            <menu:category id="c_beneficiary"/>
+            <menu:category id="c_beneficiary">
+                <menu:item id="i_beneficiary_new" messageCode="global_menu_new" url="/admin/beneficiary?form"/>
+                <menu:item id="i_beneficiary_list" messageCode="global_menu_list" url="/admin/beneficiary?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+            </menu:category>
             <menu:category id="c_inventoryitem" z="fnywkllb4elYwrYPM9nXtK97l18=">
                 <menu:item id="i_inventoryitem_new" messageCode="global_menu_new" url="/admin/inventoryItem?form" z="nOAKZFbJJoBozzdLBFt1ta8xJXw="/>
                 <menu:item id="i_inventoryitem_list" messageCode="global_menu_list" url="/admin/inventoryItem?page=1&amp;size=${empty param.size ? 10 : param.size}" z="GHPM/SN4QxjYwi33bZVP/Dhpv24="/>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.howed.heirshare5.domain.Beneficiary;
+import com.howed.heirshare5.domain.EstateAdministrator;
 import com.howed.heirshare5.service.EstateService;
 import com.howed.heirshare5.util.ControllerUtil;
 
@@ -23,12 +24,8 @@ public class BeneficiaryController {
 
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
-        populateEditForm(uiModel, new Beneficiary());
-        List<String[]> dependencies = new ArrayList<String[]>();
-        if (estateService.countAllEstates(controllerUtil.getEstateAdministratorForSession()) == 0) {
-            dependencies.add(new String[] { "estate", "admin/estate" });
-        }
-        uiModel.addAttribute("dependencies", dependencies);
+        populateEditForm(uiModel, createNewBeneficiaryWithDefaultEstate());
+        uiModel.addAttribute("dependencies", retrieveEstateDependencies());
         return "estateAdmin/beneficiary/create";
     }
 
@@ -49,5 +46,20 @@ public class BeneficiaryController {
     void populateEditForm(Model uiModel, Beneficiary beneficiary) {
         uiModel.addAttribute("beneficiary", beneficiary);
         uiModel.addAttribute("estates", estateService.findAllEstates(controllerUtil.getEstateAdministratorForSession()));
+    }
+    
+    private Beneficiary createNewBeneficiaryWithDefaultEstate() {
+    	Beneficiary beneficiary = new Beneficiary();
+    	EstateAdministrator estateAdmin = controllerUtil.getEstateAdministratorForSession();
+    	beneficiary.setEstate(controllerUtil.findDefaultEstateForSessionEstateAdmin(estateAdmin));
+    	return beneficiary;
+    }
+    
+    private List<String[]> retrieveEstateDependencies() {
+        List<String[]> dependencies = new ArrayList<String[]>();
+        if (estateService.countAllEstates(controllerUtil.getEstateAdministratorForSession()) == 0) {
+            dependencies.add(new String[] { "estate", "admin/estate" });
+        }
+        return dependencies;
     }
 }
